@@ -1,0 +1,107 @@
+body {
+    margin-top: 50px;
+    font-family: sans-serif;
+    overflow: visible;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.d-grid {
+    display: grid;
+}
+
+.js {
+    justify-content: center;
+}
+
+code {
+    border: 1px solid #4cae4f;
+    padding: 10px 15px;
+    border-radius: 1%;
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    max-height: 700px;
+    overflow: overlay;
+}
+
+form {
+    height: 100%;
+}
+
+.answ {
+    flex-wrap: wrap;
+    width: 400px;
+    height: 700px;
+}
+
+.req {
+    max-width: 300px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.mh {
+    margin: 0 2vw 50px;
+}
+
+.bot-s,
+input,
+textarea {
+    margin-bottom: 10px;
+}
+
+input {
+    font-family: sans-serif;
+    height: 30px;
+    padding: 0 5px;
+}
+
+textarea {
+    font-family: sans-serif;
+    resize: none;
+    padding: 5px;
+}
+
+button {
+    font-family: sans-serif;
+}
+
+.bot-m {
+    margin-bottom: 50px;
+}
+
+label {
+    margin-bottom: 15px;
+}
+
+.button_button__Epc_G,
+.input_input__OBE_n,
+.input_textarea__8kc0w {
+    border: 1px solid #4cae4f !important;
+}
+
+.button_button__Epc_G {
+    background-color: #4cae4f;
+    color: #fff;
+}
+
+.button_button__Epc_G:hover:not(:disabled) {
+    background-color: #009a21;
+}
+
+.button_button__Epc_G:active:not(:disabled) {
+    background: #4cae4f;
+}
+
+@media (max-width: 550px) {
+    .js {
+        flex-wrap: wrap;
+    }
+}
+
+.error {
+    border: 2px solid #e10000 !important;
+}

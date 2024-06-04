@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="https://green-api.com/docs/assets/green-api-logo_2.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://green-api.com/_next/static/css/02d24c45efdd00b2.css" data-precedence="next">
+    <link rel="stylesheet" href="https://green-api.com/_next/static/css/a0f65890e7b09d7a.css" data-precedence="next">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+</head>
+
+<body>
+    <div class="d-flex js">
+        <div class="req mh">
+            <form class="d-grid" id="green-api-form" action="{% url 'home' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" id="action" name="action">
+                <input class="input_input__OBE_n " type="text" id="idInstance" name="idInstance" placeholder="idInstance">
+                <input class="input_input__OBE_n " type="text" id="ApiTokenInstance" name="ApiTokenInstance" placeholder="ApiTokenInstance">
+            
+                <button class="bot-s button_button__Epc_G" type="button" onclick="submitForm('getSettings')">getSettings</button>
+                <button class="bot-m button_button__Epc_G" type="button" onclick="submitForm('getStateInstance')">getStateInstance</button>
+            
+                <input class="input_input__OBE_n " type="text" id="chatIdSendMessage" name="chatIdSendMessage" placeholder="chatId">
+                <textarea class="input_input__OBE_n input_textarea__8kc0w " id="message" name="message" rows="4" placeholder="message"></textarea>
+            
+                <button class="bot-m button_button__Epc_G" type="button" onclick="submitForm('sendMessage')">sendMessage</button>
+            
+                <input class="input_input__OBE_n " type="text" id="chatIdSendFileByUrl" name="chatIdSendFileByUrl" placeholder="chatId">
+                <input class="input_input__OBE_n " type="text" id="urlFile" name="urlFile" placeholder="urlFile">
+            
+                <button class="button_button__Epc_G" type="button" onclick="submitForm('sendFileByUrl')">sendFileByUrl</button>
+            </form>
+        </div>
+        <div class="d-flex answ mh">
+            <label for="message">Ответ:</label>
+            <code>
+                <script>
+                    var jsonData = {% if data != None %}{{ data| safe }}{% else %}''{% endif %};
+                    var formattedJson = JSON.stringify(jsonData, null, 4);
+                    document.write('<pre>' + formattedJson + '</pre>');
+                </script>
+            </code>
+        </div>
+    </div>
+
+    <script>
+        function submitForm(action) {
+                var form = document.getElementById('green-api-form');
+                var actionInput = document.getElementById('action');
+
+                var idInstanceInput = document.getElementById('idInstance');
+                var apiTokenInstanceInput = document.getElementById('ApiTokenInstance');
+
+                var chatIdSendMessageInput = document.getElementById('chatIdSendMessage');
+                var messageInput = document.getElementById('message');
+
+                var chatIdSendFileByUrlInput = document.getElementById('chatIdSendFileByUrl');
+                var urlFileInput = document.getElementById('urlFile');
+
+
+                var inputs = form.querySelectorAll('input, textarea');
+                inputs.forEach(function (input) {
+                    input.classList.remove('error');
+                });
+
+                if ((action === 'getSettings' || action === 'getStateInstance') && (idInstanceInput.value.trim() === '' || apiTokenInstanceInput.value.trim() === '')) {
+                    idInstanceInput.classList.add('error');
+                    apiTokenInstanceInput.classList.add('error');
+                    return;
+                }
+
+                if (action === 'sendMessage' && (idInstanceInput.value.trim() === '' || apiTokenInstanceInput.value.trim() === '' || chatIdSendMessageInput.value.trim() === '' || messageInput.value.trim() === '')) {
+                    idInstanceInput.classList.add('error');
+                    apiTokenInstanceInput.classList.add('error');
+                    chatIdSendMessageInput.classList.add('error');
+                    messageInput.classList.add('error');
+                    return;
+                }
+
+                if (action === 'sendFileByUrl' && (idInstanceInput.value.trim() === '' || apiTokenInstanceInput.value.trim() === '' || chatIdSendFileByUrlInput.value.trim() === '' || urlFileInput.value.trim() === '')) {
+                    idInstanceInput.classList.add('error');
+                    apiTokenInstanceInput.classList.add('error');
+                    chatIdSendFileByUrlInput.classList.add('error');
+                    urlFileInput.classList.add('error');
+                    return;
+                }
+
+
+                actionInput.value = action;
+
+                form.submit();
+            }
+    </script>
+</body>
+
+</html>
