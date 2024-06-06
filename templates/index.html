@@ -7,6 +7,7 @@
     <link rel="icon" href="https://green-api.com/docs/assets/green-api-logo_2.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://console.green-api.com/assets_1.1.36/index-a014b47e.css" data-precedence="next">
     <link rel="stylesheet" href="https://green-api.com/_next/static/css/02d24c45efdd00b2.css" data-precedence="next">
     <link rel="stylesheet" href="https://green-api.com/_next/static/css/a0f65890e7b09d7a.css" data-precedence="next">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -14,6 +15,9 @@
 </head>
 
 <body>
+    <a 
+        class="ant-typography link-hover-underline display-inline-block css-1co9qwi" 
+        href="{% url 'home2' %}">Страница 2</a>
     <div class="d-flex js">
         <div class="req mh">
             <form class="d-grid" id="green-api-form" action="{% url 'home' %}" method="post">

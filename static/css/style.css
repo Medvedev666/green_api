@@ -1,7 +1,11 @@
+html,
+body {
+    overflow: visible;
+}
+
 body {
     margin-top: 50px;
     font-family: sans-serif;
-    overflow: visible;
 }
 
 .d-flex {
@@ -104,4 +108,12 @@ label {
 
 .error {
     border: 2px solid #e10000 !important;
+}
+
+.ant-typography {
+    color: #3cb371;
+}
+
+.ant-typography:hover {
+    color: #009805;
 }
